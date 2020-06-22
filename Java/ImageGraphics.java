@@ -27,6 +27,7 @@ public class ImageGraphics extends JPanel {
         super.paintComponent(g);
 
         Graphics2D graphics2d = (Graphics2D) g;
+        
         graphics2d.setColor(new Color(212, 212, 212));
         graphics2d.drawRect(x, y, width, height);
     }
