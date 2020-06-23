@@ -1,22 +1,35 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import java.awt.GridLayout;
+import javax.swing.BoxLayout;
 
 public class UserInterface {
 
     JFrame frame = new JFrame("Bury the Card");
-    JPanel container = new JPanel(new GridLayout(1, 1));
-    ImageGraphics rectangle1 = new ImageGraphics(100, 50, 100, 200);
-    ImageGraphics rectangle2 = new ImageGraphics(400, 50, 100, 200);
-    
+    JPanel container = new JPanel();
+    ImageGraphics rectangle1 = new ImageGraphics(100, 100, 100, 200);
+    ImageGraphics rectangle2 = new ImageGraphics(200, 100, 100, 200);
+    BoxLayout layout = new BoxLayout(container, BoxLayout.X_AXIS);
+
     public void _frameInitialization() {
         frame.setVisible(true);
         frame.setSize(1600, 1600);
-        container.add(rectangle1);
-        container.add(rectangle2);
-        frame.add(container);
+        rectangle1.setVisible(true);
+        frame.add(rectangle1);
+
+        container.setLayout(layout);
         container.setVisible(true);
+
+        rectangle1.setVisible(true);
+        container.add(rectangle1);
+        rectangle1.revalidate();
+        rectangle1.repaint();
+
+        rectangle2.setVisible(true);
+        container.add(rectangle2);
+        rectangle2.revalidate();
+        rectangle2.repaint();
+
+        frame.add(container);
     }
 
     public static void main(String[] args) {

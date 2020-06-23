@@ -4,8 +4,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class ImageGraphics extends JPanel {
-    private static final long serialVersionUID = 1;
 
     int x, y, width, height;
 
@@ -28,7 +28,9 @@ public class ImageGraphics extends JPanel {
 
         Graphics2D graphics2d = (Graphics2D) g;
         
-        graphics2d.setColor(new Color(212, 212, 212));
+        graphics2d.setColor(new Color(178, 212, 216));
         graphics2d.drawRect(x, y, width, height);
+
+        graphics2d.fillRect(x, y, width, height);
     }
 }
