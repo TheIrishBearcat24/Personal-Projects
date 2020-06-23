@@ -6,9 +6,9 @@ public class UserInterface {
 
     JFrame frame = new JFrame("Bury the Card");
     JPanel container = new JPanel();
-    ImageGraphics rectangle1 = new ImageGraphics(100, 100, 100, 200);
+    ImageGraphics rectangle1 = new ImageGraphics(0, 0, 100, 200);
     ImageGraphics rectangle2 = new ImageGraphics(200, 100, 100, 200);
-    BoxLayout layout = new BoxLayout(container, BoxLayout.X_AXIS);
+    BoxLayout layout = new BoxLayout(container, BoxLayout.LINE_AXIS);
 
     public void _frameInitialization() {
         frame.setVisible(true);
