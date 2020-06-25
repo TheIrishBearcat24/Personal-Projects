@@ -1,56 +1,49 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
+import javax.swing.JLabel;
+import javax.swing.BoxLayout;
 
 public class UserInterface {
 
-    // found these constants from playing around with the frame
-    final int maxX = 1425;
-    final int maxY = 175;
-
     JFrame frame = new JFrame("Bury the Card");
     JPanel container = new JPanel();
-    ImageGraphics rectangle1 = new ImageGraphics(50, 0, 100, 200);
-    ImageGraphics rectangle2 = new ImageGraphics(100, 0, 100, 200);
+    JLabel label1 = new JLabel("1");
+    JLabel label2 = new JLabel("2");
+    JLabel label3 = new JLabel("3");
 
-    // BorderLayout layout = new BorderLayout(100, 100);
+    JPanel rectangle1 = new ImageGraphics(0, 0, 100, 200);
+    JPanel rectangle2 = new ImageGraphics(200, 0, 100, 200);
+    JPanel rectangle3 = new ImageGraphics(100, 0, 100, 200);
 
-    GridBagLayout _gbl = new GridBagLayout();
-    GridBagConstraints _gbc = new GridBagConstraints();
+    BoxLayout layout = new BoxLayout(container, BoxLayout.LINE_AXIS);
 
-    public void _interfaceSetup() {
+    public void _frameInitialization() {
         frame.setVisible(true);
-        frame.setSize(1920, 1080);
+        frame.setSize(1600, 1600);
 
-        _displayRectangles();
-
-        frame.add(container);
-    }
-
-    public void _displayRectangles() {
-        container.setLayout(_gbl);
+        container.setLayout(layout);
         container.setVisible(true);
-
-        // rectangle2.setVisible(true);
-        // container.add(rectangle2);
-        // rectangle2.revalidate();
-        // rectangle2.repaint();
-
-        _gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        _gbc.gridx = 0;
-        _gbc.gridy = 0;
-
         rectangle1.setVisible(true);
+        label1.setVisible(true);
+        rectangle1.add(label1);
+        container.add(rectangle1);
         rectangle1.revalidate();
         rectangle1.repaint();
-        container.add(rectangle1, _gbc);
+
+        rectangle2.setVisible(true);
+        container.add(rectangle2);
+        rectangle2.revalidate();
+        rectangle2.repaint();
+
+        rectangle3.setVisible(true);
+        container.add(rectangle3);
+        rectangle3.revalidate();
+        rectangle3.repaint();
+        frame.add(container);
     }
 
     public static void main(String[] args) {
         UserInterface _interface = new UserInterface();
-        _interface._interfaceSetup();
+        _interface._frameInitialization();
     }
 }
