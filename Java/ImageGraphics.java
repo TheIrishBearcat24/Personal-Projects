@@ -10,6 +10,8 @@ import java.util.List;
 
 import javax.swing.*;
 
+//Link to solution: https://stackoverflow.com/questions/31033359/drawing-multiple-graphic2d-components-into-jpanel
+
 @SuppressWarnings("serial")
 public class ImageGraphics extends JPanel {
     public static final int PREF_W = 500;
