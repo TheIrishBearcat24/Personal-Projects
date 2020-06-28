@@ -4,21 +4,25 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
+
 import java.awt.geom.Rectangle2D;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.JFrame;
 
 //Link to solution: https://stackoverflow.com/questions/31033359/drawing-multiple-graphic2d-components-into-jpanel
 
 @SuppressWarnings("serial")
-public class ImageGraphics extends JPanel {
-    public static final int PREF_W = 500;
-    public static final int PREF_H = PREF_W;
-    public List<Shape> shapes = new ArrayList<>();
+public class InterfaceAndGraphics extends JPanel {
+    private static final int PREF_W = 1920;
+    private static final int PREF_H = 1080;
+    private List<Shape> shapes = new ArrayList<>();
 
-    public ImageGraphics() {
+    public InterfaceAndGraphics() {
         setBackground(Color.LIGHT_GRAY);
     }
 
@@ -30,7 +34,7 @@ public class ImageGraphics extends JPanel {
     @Override // make it bigger
     public Dimension getPreferredSize() {
         if (isPreferredSizeSet()) {
-           return super.getPreferredSize();
+            return super.getPreferredSize();
         }
         
         return new Dimension(PREF_W, PREF_H);
@@ -42,23 +46,22 @@ public class ImageGraphics extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         for (Shape shape : shapes) {
-          g2.draw(shape);
+            g2.draw(shape);
         }
     }
 
     public static void createGUI() {
-        ImageGraphics rectangles = new ImageGraphics();
+        InterfaceAndGraphics rectangles = new InterfaceAndGraphics();
 
-        rectangles.addShape(new Rectangle2D.Double(100, 0, 100, 100));
-        rectangles.addShape(new Rectangle2D.Double(200, 50, 100, 100));
-        rectangles.addShape(new Rectangle2D.Double(300, 150, 100, 100));
-        rectangles.addShape(new Rectangle2D.Double(400, 200, 100, 100));
+        rectangles.addShape(new Rectangle2D.Double(50, 50, 100, 200));
+        rectangles.addShape(new Rectangle2D.Double(200, 100, 100, 200));
+        rectangles.addShape(new Rectangle2D.Double(300, 150, 100, 200));
+        rectangles.addShape(new Rectangle2D.Double(400, 200, 100, 200));
 
         JFrame frame = new JFrame("Rectangles");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(rectangles);
         frame.pack();
-        frame.setLocationByPlatform(true);
         frame.setVisible(true);
     }
 
