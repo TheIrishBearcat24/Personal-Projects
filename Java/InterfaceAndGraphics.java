@@ -11,8 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 
 //Link to solution: https://stackoverflow.com/questions/31033359/drawing-multiple-graphic2d-components-into-jpanel
 
@@ -20,7 +22,13 @@ import javax.swing.JFrame;
 public class InterfaceAndGraphics extends JPanel {
     private static final int PREF_W = 1920;
     private static final int PREF_H = 1080;
+    
     private List<Shape> shapes = new ArrayList<>();
+    
+    ImageIcon icon = new ImageIcon("images/back_of_card.jpg");
+    
+    JPanel imageContainer = new JPanel();
+    static JFrame frame = new JFrame("Rectangles");
 
     public InterfaceAndGraphics() {
         setBackground(Color.LIGHT_GRAY);
@@ -31,7 +39,13 @@ public class InterfaceAndGraphics extends JPanel {
         repaint();
     }
 
-    @Override // make it bigger
+    public void addImage() {
+        imageContainer.add(new JLabel(icon));
+        imageContainer.setVisible(true);
+        frame.add(imageContainer);
+    }
+
+    @Override
     public Dimension getPreferredSize() {
         if (isPreferredSizeSet()) {
             return super.getPreferredSize();
@@ -58,7 +72,8 @@ public class InterfaceAndGraphics extends JPanel {
         rectangles.addShape(new Rectangle2D.Double(300, 150, 100, 200));
         rectangles.addShape(new Rectangle2D.Double(400, 200, 100, 200));
 
-        JFrame frame = new JFrame("Rectangles");
+        rectangles.addImage();
+        
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(rectangles);
         frame.pack();
