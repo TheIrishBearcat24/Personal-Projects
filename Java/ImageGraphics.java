@@ -1,36 +1,71 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class ImageGraphics extends JPanel {
+    public static final int PREF_W = 500;
+    public static final int PREF_H = PREF_W;
+    public List<Shape> shapes = new ArrayList<>();
 
-    int x, y, width, height;
-
-    //Default constructor
     public ImageGraphics() {
-
+        setBackground(Color.LIGHT_GRAY);
     }
 
-    //Constructor to set position of each rectangle instead of default position
-    public ImageGraphics(int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    public void addShape(Shape shape) {
+        shapes.add(shape);
+        repaint();
     }
 
-    //Draws the rectangle with the specific coordinates and dimensions
+    @Override // make it bigger
+    public Dimension getPreferredSize() {
+        if (isPreferredSizeSet()) {
+           return super.getPreferredSize();
+        }
+        
+        return new Dimension(PREF_W, PREF_H);
+    }
+
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        for (Shape shape : shapes) {
+          g2.draw(shape);
+        }
+    }
 
-        Graphics2D graphics2d = (Graphics2D) g;
-        
-        graphics2d.setColor(new Color(178, 212, 216));
-        graphics2d.drawRect(x, y, width, height);
+    public static void createGUI() {
+        ImageGraphics rectangles = new ImageGraphics();
 
-        graphics2d.fillRect(x, y, width, height);
+        rectangles.addShape(new Rectangle2D.Double(100, 0, 100, 100));
+        rectangles.addShape(new Rectangle2D.Double(200, 50, 100, 100));
+        rectangles.addShape(new Rectangle2D.Double(300, 150, 100, 100));
+        rectangles.addShape(new Rectangle2D.Double(400, 200, 100, 100));
+
+        JFrame frame = new JFrame("Rectangles");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.getContentPane().add(rectangles);
+        frame.pack();
+        frame.setLocationByPlatform(true);
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                createGUI();
+            }
+        });
     }
 }
