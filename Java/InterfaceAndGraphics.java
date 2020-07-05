@@ -11,10 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
-import javax.swing.ImageIcon;
 
 //Link to solution: https://stackoverflow.com/questions/31033359/drawing-multiple-graphic2d-components-into-jpanel
 
@@ -24,10 +22,7 @@ public class InterfaceAndGraphics extends JPanel {
     private static final int PREF_H = 1080;
     
     private List<Shape> shapes = new ArrayList<>();
-    
-    ImageIcon icon = new ImageIcon("images/back_of_card.jpg");
-    
-    JPanel imageContainer = new JPanel();
+
     static JFrame frame = new JFrame("Rectangles");
 
     public InterfaceAndGraphics() {
@@ -38,13 +33,6 @@ public class InterfaceAndGraphics extends JPanel {
         shapes.add(shape);
         repaint();
     }
-
-    public void addImage() {
-        imageContainer.add(new JLabel(icon));
-        imageContainer.setVisible(true);
-        frame.add(imageContainer);
-    }
-
     @Override
     public Dimension getPreferredSize() {
         if (isPreferredSizeSet()) {
@@ -67,12 +55,12 @@ public class InterfaceAndGraphics extends JPanel {
     public static void createGUI() {
         InterfaceAndGraphics rectangles = new InterfaceAndGraphics();
 
-        rectangles.addShape(new Rectangle2D.Double(50, 50, 100, 200));
-        rectangles.addShape(new Rectangle2D.Double(200, 100, 100, 200));
-        rectangles.addShape(new Rectangle2D.Double(300, 150, 100, 200));
-        rectangles.addShape(new Rectangle2D.Double(400, 200, 100, 200));
+        rectangles.addShape(new Rectangle2D.Double(200, 50, 100, 200));
+        rectangles.addShape(new Rectangle2D.Double(200, 500, 100, 200));
+        rectangles.addShape(new Rectangle2D.Double(1100, 50, 100, 200));
+        rectangles.addShape(new Rectangle2D.Double(1100, 500, 100, 200));
 
-        rectangles.addImage();
+        // rectangles.addImage(imageContainer, "https://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-bicycle-rider-back-1_1024x1024.png?v=1535755695");
         
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(rectangles);
