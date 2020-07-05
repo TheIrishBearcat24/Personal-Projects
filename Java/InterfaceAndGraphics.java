@@ -30,9 +30,13 @@ public class InterfaceAndGraphics extends JPanel {
     
     private List<Shape> shapes = new ArrayList<>();
 
-    static JFrame frame = new JFrame("Rectangles");
+    static JFrame frame = new JFrame("Bury the Card");
 
     BufferedImage _img;
+
+    String filePath = "Java/images/back_of_card.jpg";
+
+    File f = new File(filePath);
 
     public InterfaceAndGraphics() {
         setBackground(Color.LIGHT_GRAY);
@@ -60,12 +64,16 @@ public class InterfaceAndGraphics extends JPanel {
             g2.draw(shape);
         }
 
-        g2.drawImage(_img, 25, 25, null);
+        g2.drawImage(_img, 200, 50, 100, 250, null);
+        g2.drawImage(_img, 200, 500, 100, 250, null);
+        g2.drawImage(_img, 800, 50, 100, 250, null);
+        g2.drawImage(_img, 800, 500, 100, 250, null);
+        g2.drawImage(_img, 1000, 280, 100, 250, null);
     }
 
     public void imageLoad() {
         try {
-            _img = ImageIO.read(new File("Java/images/back_of_card.jpg"));
+            _img = ImageIO.read(f);
         }
 
         catch (IOException e) {
@@ -82,9 +90,7 @@ public class InterfaceAndGraphics extends JPanel {
         rectangles.addShape(new Rectangle2D.Double(800, 50, 100, 200));
         rectangles.addShape(new Rectangle2D.Double(800, 500, 100, 200));
         rectangles.addShape(new Rectangle2D.Double(1000, 280, 100, 200));
-
-        // rectangles.addImage(imageContainer, "https://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-bicycle-rider-back-1_1024x1024.png?v=1535755695");
-
+        
         rectangles.imageLoad();
         
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
