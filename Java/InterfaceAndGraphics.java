@@ -7,12 +7,19 @@ import java.awt.Shape;
 
 import java.awt.geom.Rectangle2D;
 
+import java.awt.image.BufferedImage;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
+
+import javax.imageio.ImageIO;
+
+import java.io.File;
+import java.io.IOException;
 
 //Link to solution: https://stackoverflow.com/questions/31033359/drawing-multiple-graphic2d-components-into-jpanel
 
@@ -24,6 +31,8 @@ public class InterfaceAndGraphics extends JPanel {
     private List<Shape> shapes = new ArrayList<>();
 
     static JFrame frame = new JFrame("Rectangles");
+
+    BufferedImage _img;
 
     public InterfaceAndGraphics() {
         setBackground(Color.LIGHT_GRAY);
@@ -50,6 +59,19 @@ public class InterfaceAndGraphics extends JPanel {
         for (Shape shape : shapes) {
             g2.draw(shape);
         }
+
+        g2.drawImage(_img, 25, 25, null);
+    }
+
+    public void imageLoad() {
+        try {
+            _img = ImageIO.read(new File("Java/images/back_of_card.jpg"));
+        }
+
+        catch (IOException e) {
+            System.out.println("File not loaded!");
+            System.exit(0);
+        }
     }
 
     public static void createGUI() {
@@ -62,6 +84,8 @@ public class InterfaceAndGraphics extends JPanel {
         rectangles.addShape(new Rectangle2D.Double(1000, 280, 100, 200));
 
         // rectangles.addImage(imageContainer, "https://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-bicycle-rider-back-1_1024x1024.png?v=1535755695");
+
+        rectangles.imageLoad();
         
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(rectangles);
