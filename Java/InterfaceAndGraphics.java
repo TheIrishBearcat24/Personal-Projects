@@ -57,8 +57,9 @@ public class InterfaceAndGraphics extends JPanel {
 
         rectangles.addShape(new Rectangle2D.Double(200, 50, 100, 200));
         rectangles.addShape(new Rectangle2D.Double(200, 500, 100, 200));
-        rectangles.addShape(new Rectangle2D.Double(1100, 50, 100, 200));
-        rectangles.addShape(new Rectangle2D.Double(1100, 500, 100, 200));
+        rectangles.addShape(new Rectangle2D.Double(800, 50, 100, 200));
+        rectangles.addShape(new Rectangle2D.Double(800, 500, 100, 200));
+        rectangles.addShape(new Rectangle2D.Double(1000, 280, 100, 200));
 
         // rectangles.addImage(imageContainer, "https://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-bicycle-rider-back-1_1024x1024.png?v=1535755695");
         
