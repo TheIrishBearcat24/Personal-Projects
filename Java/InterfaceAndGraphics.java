@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Shape;
 
 import java.awt.geom.Rectangle2D;
@@ -21,8 +20,6 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
-//Link to solution: https://stackoverflow.com/questions/31033359/drawing-multiple-graphic2d-components-into-jpanel
-
 @SuppressWarnings("serial")
 public class InterfaceAndGraphics extends JPanel {
     private static final int PREF_W = 1920;
@@ -34,15 +31,15 @@ public class InterfaceAndGraphics extends JPanel {
 
     BufferedImage _img;
 
-    String filePath = "Java/images/back_of_card.jpg";
+    private String filePath = "Java/images/back_of_card.jpg";
 
-    File f = new File(filePath);
+    private File f = new File(filePath);
 
-    public InterfaceAndGraphics() {
+    private InterfaceAndGraphics() {
         setBackground(Color.LIGHT_GRAY);
     }
 
-    public void addShape(Shape shape) {
+    private void addShape(Shape shape) {
         shapes.add(shape);
         repaint();
     }
@@ -59,7 +56,6 @@ public class InterfaceAndGraphics extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         for (Shape shape : shapes) {
             g2.draw(shape);
         }
@@ -71,7 +67,7 @@ public class InterfaceAndGraphics extends JPanel {
         g2.drawImage(_img, 1000, 280, 100, 250, null);
     }
 
-    public void imageLoad() {
+    private void imageLoad() {
         try {
             _img = ImageIO.read(f);
         }
