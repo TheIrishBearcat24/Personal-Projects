@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 
+// import java.awt.event.ActionEvent;
+// import java.awt.event.ActionListener;
+
 import java.awt.geom.Rectangle2D;
 
 import java.awt.image.BufferedImage;
@@ -14,6 +17,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
+import javax.swing.JButton;
 
 import javax.imageio.ImageIO;
 
@@ -22,20 +26,25 @@ import java.io.IOException;
 
 @SuppressWarnings("serial")
 public class InterfaceAndGraphics extends JPanel {
-    private static final int PREF_W = 1920;
-    private static final int PREF_H = 1080;
-    
+    private final int PREF_W = 1920;
+    private final int PREF_H = 1080;
+
     private List<Shape> shapes = new ArrayList<>();
 
     static JFrame frame = new JFrame("Bury the Card");
+    public static JButton _button = new JButton("Run animation");
+    static JPanel container = new JPanel();
 
-    BufferedImage _img;
+    private BufferedImage _img;
 
     private String filePath = "Java/images/back_of_card.jpg";
+    private static String soundPath = "Java/audio/dealCard.wav";
 
     private File f = new File(filePath);
 
-    private InterfaceAndGraphics() {
+    static AnimationsAndSound animationsAndSound = new AnimationsAndSound();
+
+    public InterfaceAndGraphics() {
         setBackground(Color.LIGHT_GRAY);
     }
 
@@ -43,12 +52,13 @@ public class InterfaceAndGraphics extends JPanel {
         shapes.add(shape);
         repaint();
     }
+
     @Override
     public Dimension getPreferredSize() {
         if (isPreferredSizeSet()) {
             return super.getPreferredSize();
         }
-        
+
         return new Dimension(PREF_W, PREF_H);
     }
 
@@ -60,11 +70,7 @@ public class InterfaceAndGraphics extends JPanel {
             g2.draw(shape);
         }
 
-        g2.drawImage(_img, 200, 50, 100, 250, null);
-        g2.drawImage(_img, 200, 500, 100, 250, null);
-        g2.drawImage(_img, 800, 50, 100, 250, null);
-        g2.drawImage(_img, 800, 500, 100, 250, null);
-        g2.drawImage(_img, 1000, 280, 100, 250, null);
+        g2.drawImage(_img, 1000, 280, 189, 266, null);
     }
 
     private void imageLoad() {
@@ -81,13 +87,23 @@ public class InterfaceAndGraphics extends JPanel {
     public static void createGUI() {
         InterfaceAndGraphics rectangles = new InterfaceAndGraphics();
 
-        rectangles.addShape(new Rectangle2D.Double(200, 50, 100, 200));
-        rectangles.addShape(new Rectangle2D.Double(200, 500, 100, 200));
-        rectangles.addShape(new Rectangle2D.Double(800, 50, 100, 200));
-        rectangles.addShape(new Rectangle2D.Double(800, 500, 100, 200));
-        rectangles.addShape(new Rectangle2D.Double(1000, 280, 100, 200));
+        container.setVisible(true);
+
+        rectangles.addShape(new Rectangle2D.Double(150, 50, 189, 266));
+        rectangles.addShape(new Rectangle2D.Double(150, 500, 189, 266));
+        rectangles.addShape(new Rectangle2D.Double(750, 50, 189, 266));
+        rectangles.addShape(new Rectangle2D.Double(750, 500, 189, 266));
+        rectangles.addShape(new Rectangle2D.Double(1000, 280, 189, 266));
+
+        _button.setVisible(true);
+        container.setVisible(true);
+        container.add(_button);
+
+        rectangles.add(container);
         
         rectangles.imageLoad();
+
+        animationsAndSound.dealCard(soundPath);
         
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(rectangles);
@@ -97,7 +113,6 @@ public class InterfaceAndGraphics extends JPanel {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 createGUI();
             }
