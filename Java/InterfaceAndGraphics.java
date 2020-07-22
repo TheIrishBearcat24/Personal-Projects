@@ -4,9 +4,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 
-// import java.awt.event.ActionEvent;
-// import java.awt.event.ActionListener;
-
 import java.awt.geom.Rectangle2D;
 
 import java.awt.image.BufferedImage;
@@ -32,17 +29,19 @@ public class InterfaceAndGraphics extends JPanel {
     private List<Shape> shapes = new ArrayList<>();
 
     static JFrame frame = new JFrame("Bury the Card");
-    public static JButton _button = new JButton("Run animation");
+    static JButton _button = new JButton("Run animation");
     static JPanel container = new JPanel();
 
-    private BufferedImage _img;
+    BufferedImage _img;
+    
+    Graphics2D g2;
 
-    private String filePath = "Java/images/back_of_card.jpg";
     private static String soundPath = "Java/audio/dealCard.wav";
 
-    private File f = new File(filePath);
+    static Sounds sounds = new Sounds();
+    static Animations animations = new Animations();
 
-    static AnimationsAndSound animationsAndSound = new AnimationsAndSound();
+    Rectangle2D.Double rect1 = new Rectangle2D.Double(100, 100, 100, 100);
 
     public InterfaceAndGraphics() {
         setBackground(Color.LIGHT_GRAY);
@@ -65,7 +64,7 @@ public class InterfaceAndGraphics extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
+        g2 = (Graphics2D) g;
         for (Shape shape : shapes) {
             g2.draw(shape);
         }
@@ -73,21 +72,21 @@ public class InterfaceAndGraphics extends JPanel {
         g2.drawImage(_img, 1000, 280, 189, 266, null);
     }
 
-    private void imageLoad() {
+    public BufferedImage imageLoad() {
         try {
-            _img = ImageIO.read(f);
+            _img = ImageIO.read(new File("Java/images/back_of_card.jpg"));
         }
 
         catch (IOException e) {
             System.out.println("File not loaded!");
             System.exit(0);
         }
+
+        return _img;
     }
 
     public static void createGUI() {
         InterfaceAndGraphics rectangles = new InterfaceAndGraphics();
-
-        container.setVisible(true);
 
         rectangles.addShape(new Rectangle2D.Double(150, 50, 189, 266));
         rectangles.addShape(new Rectangle2D.Double(150, 500, 189, 266));
@@ -102,8 +101,8 @@ public class InterfaceAndGraphics extends JPanel {
         rectangles.add(container);
         
         rectangles.imageLoad();
-
-        animationsAndSound.dealCard(soundPath);
+        
+        sounds.playSound(soundPath);
         
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(rectangles);

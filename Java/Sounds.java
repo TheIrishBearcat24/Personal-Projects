@@ -7,15 +7,17 @@ import java.awt.event.ActionListener;
 
 import java.io.File;
 
-public class AnimationsAndSound {
+public class Sounds {
 
-    public void dealCard(String soundName) {
+    // function for playing sound
+    // had to look up on internet how to do this
+    public void playSound(String soundName) {
         InterfaceAndGraphics._button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    AudioInputStream ais = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                    AudioInputStream _ais = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
                     Clip _clip = AudioSystem.getClip();
-                    _clip.open(ais);
+                    _clip.open(_ais);
                     _clip.start();
                 }
 
