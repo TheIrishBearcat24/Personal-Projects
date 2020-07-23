@@ -64,7 +64,7 @@ public class InterfaceAndGraphics extends JPanel {
 
         _button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Timer timer = new Timer(10, new ActionListener() {
+				Timer timer = new Timer(30, new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         _image.move();
                         repaint(_image.getX(), _image.getY(), _image.getImageWidth(), _image.getImageHeight());
