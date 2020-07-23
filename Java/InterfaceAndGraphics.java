@@ -4,9 +4,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 
-import java.awt.geom.Rectangle2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.awt.image.BufferedImage;
+import java.awt.geom.Rectangle2D;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
 import javax.swing.JButton;
-
-import javax.imageio.ImageIO;
-
-import java.io.File;
-import java.io.IOException;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class InterfaceAndGraphics extends JPanel {
@@ -32,16 +29,10 @@ public class InterfaceAndGraphics extends JPanel {
     static JButton _button = new JButton("Run animation");
     static JPanel container = new JPanel();
 
-    BufferedImage _img;
-    
-    Graphics2D g2;
-
-    private static String soundPath = "Java/audio/dealCard.wav";
+    private static final String soundPath = "Java/audio/dealCard.wav";
 
     static Sounds sounds = new Sounds();
-    static Animations animations = new Animations();
-
-    Rectangle2D.Double rect1 = new Rectangle2D.Double(100, 100, 100, 100);
+    ImageWork _image = new ImageWork();
 
     public InterfaceAndGraphics() {
         setBackground(Color.LIGHT_GRAY);
@@ -64,28 +55,29 @@ public class InterfaceAndGraphics extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g2 = (Graphics2D) g;
+        Graphics2D g2 = (Graphics2D) g;
         for (Shape shape : shapes) {
             g2.draw(shape);
         }
 
-        g2.drawImage(_img, 1000, 280, 189, 266, null);
+        g2.drawImage(_image.image, _image.getX(), _image.getY(), this);
+
+        _button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Timer timer = new Timer(10, new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        _image.move();
+                        repaint(_image.getX(), _image.getY(), _image.getImageWidth(), _image.getImageHeight());
+                    }
+                });
+        
+                timer.start();
+			}
+            
+        });
     }
 
-    public BufferedImage imageLoad() {
-        try {
-            _img = ImageIO.read(new File("Java/images/back_of_card.jpg"));
-        }
-
-        catch (IOException e) {
-            System.out.println("File not loaded!");
-            System.exit(0);
-        }
-
-        return _img;
-    }
-
-    public static void createGUI() {
+    private static void createGUI() {
         InterfaceAndGraphics rectangles = new InterfaceAndGraphics();
 
         rectangles.addShape(new Rectangle2D.Double(150, 50, 189, 266));
@@ -99,8 +91,6 @@ public class InterfaceAndGraphics extends JPanel {
         container.add(_button);
 
         rectangles.add(container);
-        
-        rectangles.imageLoad();
         
         sounds.playSound(soundPath);
         
