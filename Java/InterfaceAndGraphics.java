@@ -104,7 +104,7 @@ public class InterfaceAndGraphics extends JPanel {
         
         sounds.playSound(soundPath);
         
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(rectangles);
         frame.pack();
         frame.setVisible(true);
