@@ -19,6 +19,7 @@ public class Sounds {
                     Clip _clip = AudioSystem.getClip();
                     _clip.open(_ais);
                     _clip.start();
+                    // _clip.loop(10);
                 }
 
                 catch (Exception ex) {

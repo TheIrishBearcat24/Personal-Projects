@@ -66,14 +66,13 @@ public class InterfaceAndGraphics extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Timer timer = new Timer(30, new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        _image.move();
+                        _image.move(750, 50);
                         repaint(_image.getX(), _image.getY(), _image.getImageWidth(), _image.getImageHeight());
                     }
                 });
         
                 timer.start();
 			}
-            
         });
     }
 

@@ -9,8 +9,6 @@ public class ImageWork {
     private int y = 280;
     private int dx = -10;
     private int dy = -10;
-    private int destX = 750;
-    private int destY = 50;
     private int width;
     private int height;
 
@@ -20,6 +18,7 @@ public class ImageWork {
         loadImage();
     }
 
+    //loads up image
     private void loadImage() {
         ImageIcon i = new ImageIcon(imagePath);
         image = i.getImage();
@@ -28,7 +27,16 @@ public class ImageWork {
         height = image.getHeight(null);
     }
 
-    public void move() {
+    /**
+     * @param destX x coordinate for the card to move to
+     * @param destY y coordinate for the card to move to
+     * 
+     * x is the starting x position for the deck of cards
+     * y is the starting y position for the deck of cards
+     * 
+     * the logic below prevents the card from moving out of the screen
+     */
+    public void move(int destX, int destY) {
         if (x > destX) {
             x += dx;
         }
