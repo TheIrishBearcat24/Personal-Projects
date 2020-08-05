@@ -4,8 +4,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+// import java.awt.event.ActionEvent;
+// import java.awt.event.ActionListener;
 
 import java.awt.geom.Rectangle2D;
 
@@ -16,13 +16,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import javax.swing.Timer;
+// import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class InterfaceAndGraphics extends JPanel {
     private final int PREF_W = 1920;
     private final int PREF_H = 1080;
-    private final int REFRESH_RATE = 30; // ms for timer
+    // private final int REFRESH_RATE = 30; // ms for timer
 
     private List<Shape> shapes = new ArrayList<>();
 
@@ -63,21 +63,21 @@ public class InterfaceAndGraphics extends JPanel {
 
         g2.drawImage(_image.image, _image.getX(), _image.getY(), this);
 
-        _button.addActionListener(new ActionListener() {
+        // _button.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ActionListener updListener = new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        _image.move(750, 50);
-                        repaint();
-                    }   
-                };
+		// 	@Override
+		// 	public void actionPerformed(ActionEvent e) {
+		// 		ActionListener updListener = new ActionListener() {
+        //             @Override
+        //             public void actionPerformed(ActionEvent e) {
+        //                 _image.move(750, 50);
+        //                 repaint();
+        //             }   
+        //         };
         
-                new Timer(REFRESH_RATE, updListener);
-			} 
-        });
+        //         new Timer(REFRESH_RATE, updListener);
+		// 	} 
+        // });
     }
 
     private static void createGUI() {
