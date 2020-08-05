@@ -75,7 +75,7 @@ public class InterfaceAndGraphics extends JPanel {
                     }   
                 };
         
-                new Timer(REFRESH_RATE, updListener);
+                new Timer(REFRESH_RATE, updListener); // this timer is for refresh
 			} 
         });
     }
