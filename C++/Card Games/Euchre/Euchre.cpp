@@ -17,19 +17,28 @@ void Euchre::initDeck() {
         {queen, clubs},
         {queen, hearts},
         {queen, spades},
-        {queen, diamonds}
+        {queen, diamonds},
+        {king, clubs},
+        {king, hearts},
+        {king, spades},
+        {king, diamonds}
     };
 }
 
-void Euchre::testPrint() {
+void Euchre::printDeck() {
     for (const Deck &d : deckOfCards) {
         cout << d.value << " of " << d.suit << endl;
     }
 }
 
+void Euchre::shuffle() {
+    random_shuffle(deckOfCards.begin(), deckOfCards.end());
+}
+
 Euchre::Euchre() {
     initDeck();
-    testPrint();
+    shuffle();
+    printDeck();
 }
 
 int main() {

@@ -5,8 +5,8 @@ using namespace std;
 
 #include <iostream>
 #include <string>
-#include <map>
 #include <vector>
+#include <algorithm>
 
 class Euchre {
 
@@ -32,7 +32,7 @@ class Euchre {
 
     public:
         void initDeck();
-        void testPrint();
+        void printDeck();
         void shuffle();
         void dealPlayer();
         void setBauers();
