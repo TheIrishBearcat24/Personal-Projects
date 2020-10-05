@@ -1,6 +1,6 @@
 #include "BlackjackMain.h"
 
-void BlackjackMain::loadDeck() {
+void BlackjackMain::loadDeck() { // creates entire deck of cards
     deckOfCards = {
         {two, clubs},
         {three, clubs},
@@ -62,16 +62,17 @@ void BlackjackMain::loadDeck() {
 
 void BlackjackMain::printDeck() {
     for (const Deck &d : deckOfCards) {
-        cout << d.ranks << " of " << d.suits << endl;
+        cout << d.ranks << " of " << d.suits << endl; // had to look up how to print out a vector of structs
     }
 }
 
 void BlackjackMain::shuffleDeck() {
-    srand(time(0));
+    srand(time(0)); // random number generator, if this isn't called, the same results will appear every time
     
     for (int i = 0; i < 3; i++) {
         random_shuffle(deckOfCards.begin(), deckOfCards.end());
-        cout << endl;
+        cout << endl; // this is just for me to see where the new shuffle starts, was originally a huge mess of lines
+        // printed out
     }
 }
 

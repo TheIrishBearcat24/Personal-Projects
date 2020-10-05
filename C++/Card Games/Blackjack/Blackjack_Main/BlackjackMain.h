@@ -31,20 +31,6 @@ class BlackjackMain {
         string spades = "Spades";
         string diamonds = "Diamonds";
 
-        // int two = 2;
-        // int three = 3;
-        // int four = 4;
-        // int five = 5;
-        // int six = 6;
-        // int seven = 7;
-        // int eight = 8;
-        // int nine = 9;
-        // int ten = 10;
-        // char jack = 10;
-        // int queen = 10;
-        // int king = 10;
-        // int ace = 11;
-
         struct Deck {
             string ranks;
             string suits;
@@ -56,6 +42,7 @@ class BlackjackMain {
         void loadDeck();
         void printDeck();
         void shuffleDeck();
+        void dealPlayers();
 };
 
 #endif
