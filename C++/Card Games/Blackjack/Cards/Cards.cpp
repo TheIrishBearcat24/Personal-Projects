@@ -1,6 +1,6 @@
-#include "BlackjackMain.h"
+#include "Cards.h"
 
-void BlackjackMain::loadDeck() { // creates entire deck of cards
+void Cards::loadDeck() { // creates entire deck of cards
     deckOfCards = {
         {two, clubs},
         {three, clubs},
@@ -60,20 +60,20 @@ void BlackjackMain::loadDeck() { // creates entire deck of cards
     };
 }
 
-void BlackjackMain::printDeck() {
+void Cards::printDeck() {
     for (const Deck &d : deckOfCards) {
         cout << d.ranks << " of " << d.suits << endl; // had to look up how to print out a vector of structs
     }
 }
 
-void BlackjackMain::shuffleDeck() {
+void Cards::shuffleDeck() {
     srand(time(0)); // random number generator, if this isn't called, the same results will appear every time
     
     random_shuffle(deckOfCards.begin(), deckOfCards.end());
     printDeck();
 }
 
-void BlackjackMain::dealPlayers() {
+void Cards::dealPlayers() {
     /**
      * TODO:
      * 1. Implement function for how many players
@@ -84,7 +84,7 @@ void BlackjackMain::dealPlayers() {
 }
 
 int main() {
-    BlackjackMain _init;
+    Cards _init;
     _init.loadDeck();
     _init.shuffleDeck();
 

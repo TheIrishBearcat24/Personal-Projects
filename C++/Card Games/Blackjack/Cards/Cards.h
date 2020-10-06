@@ -1,5 +1,5 @@
-#ifndef BlackjackMain_H
-#define BlackjackMain_H
+#ifndef CARDS_H
+#define CARDS_H
 
 #include <vector>
 #include <string>
@@ -8,9 +8,11 @@
 #include <ctime>
 #include <stdlib.h>
 
+#include "Board.h"
+
 using namespace std;
 
-class BlackjackMain {
+class Cards {
     private:
         string two = "Two";
         string three = "Three";
