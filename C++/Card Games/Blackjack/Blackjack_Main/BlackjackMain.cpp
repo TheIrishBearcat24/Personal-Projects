@@ -69,11 +69,18 @@ void BlackjackMain::printDeck() {
 void BlackjackMain::shuffleDeck() {
     srand(time(0)); // random number generator, if this isn't called, the same results will appear every time
     
-    for (int i = 0; i < 3; i++) {
-        random_shuffle(deckOfCards.begin(), deckOfCards.end());
-        cout << endl; // this is just for me to see where the new shuffle starts, was originally a huge mess of lines
-        // printed out
-    }
+    random_shuffle(deckOfCards.begin(), deckOfCards.end());
+    printDeck();
+}
+
+void BlackjackMain::dealPlayers() {
+    /**
+     * TODO:
+     * 1. Implement function for how many players
+     * 2. Figure out how to deal card and then remove it from vector
+     *
+     * 
+    */
 }
 
 int main() {
