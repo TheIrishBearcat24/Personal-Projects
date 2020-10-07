@@ -44,7 +44,6 @@ class Cards {
         void loadDeck();
         void printDeck();
         void shuffleDeck();
-        void dealPlayers();
 };
 
 #endif
