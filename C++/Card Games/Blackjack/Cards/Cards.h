@@ -40,10 +40,13 @@ class Cards {
 
         vector<Deck> deckOfCards;
 
+        int convertedValue;
+
     public:
         void loadDeck();
         void printDeck();
         void shuffleDeck();
+        int stringToNumConvert();
 };
 
 #endif

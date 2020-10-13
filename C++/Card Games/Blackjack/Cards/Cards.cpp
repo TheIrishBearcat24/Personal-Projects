@@ -73,14 +73,8 @@ void Cards::shuffleDeck() {
     printDeck();
 }
 
-void Cards::dealPlayers() {
-    /**
-     * TODO:
-     * 1. Implement function for how many players
-     * 2. Figure out how to deal card and then remove it from vector
-     *
-     * 
-    */
+int Cards::stringToNumConvert() {
+    
 }
 
 int main() {
