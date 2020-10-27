@@ -22,9 +22,9 @@ class Board {
 
         int getCurrentAmount();
 
-        void placeBet();
+        // void placeBet();
 
-        void playerDecision(); // this is for hit, stand, or double down
+        // void playerDecision(); // this is for hit, stand, or double down
 };
 
 #endif
