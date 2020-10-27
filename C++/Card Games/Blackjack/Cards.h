@@ -46,7 +46,6 @@ class Cards {
         void loadDeck();
         void printDeck();
         void shuffleDeck();
-        int stringToNumConvert();
 };
 
 #endif

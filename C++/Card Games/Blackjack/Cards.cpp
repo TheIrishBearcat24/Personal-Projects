@@ -73,10 +73,6 @@ void Cards::shuffleDeck() {
     printDeck();
 }
 
-int Cards::stringToNumConvert() {
-    
-}
-
 int main() {
     Cards _init;
     _init.loadDeck();
