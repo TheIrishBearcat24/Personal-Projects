@@ -1,14 +1,14 @@
 #ifndef PLAYERS_H
 #define PLAYERS_H
 
-#include "C:\Users\Cameron Clarke\Desktop\Personal-Projects\C++\Card Games\Blackjack\Cards.h"
+#include "Cards.h"
 #include "Board.h"
 
 #include <vector>
 
 using namespace std;
 
-class Players {
+class Players : public Board {
     private:
         struct Player {
             int currentPot;
@@ -16,7 +16,8 @@ class Players {
             vector<string[]> playerHand;  
         };
 
-        Board _board;
+        
+        
     public:
         void dealPlayers();
         Player getPlayerInfo();
