@@ -1,12 +1,10 @@
 #include "Players.h"
 
 void Players::dealPlayers() {
-    // board.setNumPlayers();
-
-    
+    _board.setNumPlayers();
 
     for (int i = 0; i < 2; i++) {
-        cout << "I am Cam \n";
+        cout << "This is a test" << endl;
     }
 }
 
@@ -18,5 +16,6 @@ int main() {
     Players p;
 
     p.dealPlayers();
+
     return 0;
 }

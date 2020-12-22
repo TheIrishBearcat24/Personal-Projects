@@ -8,17 +8,15 @@
 
 using namespace std;
 
-class Players : public Board {
+class Players {
     private:
         struct Player {
             int currentPot;
             int betAmount;
             vector<string[]> playerHand;  
         };
-
-        
-        
     public:
+        Board _board;
         void dealPlayers();
         Player getPlayerInfo();
         void setPlayerInfo(struct Player &);

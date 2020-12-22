@@ -11,20 +11,18 @@ class Board {
         int currentAmount; // variable for current amount of money
         int bet;
 
-        struct playerMoves {
-            char hit = 'H';
-            char stand = 'S';
-            char double_down = 'D';
-        };
+        char hit = 'H';
+        char stand = 'S';
+        char double_down = 'D';
     public:
         void setNumPlayers();
-        int getNumPlayers();
 
         int getCurrentAmount();
+        int getNumPlayers(); // will need this for Players class when dealing?
 
-        // void placeBet();
+        void placeBet(int bet);
 
-        // void playerDecision(); // this is for hit, stand, or double down
+        void playerDecision(char decision); // this is for hit, stand, or double down
 };
 
 #endif
