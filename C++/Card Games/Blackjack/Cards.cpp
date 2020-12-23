@@ -61,15 +61,14 @@ void Cards::loadDeck() { // creates entire deck of cards
 }
 
 void Cards::printDeck() {
-    for (const Deck &d : deckOfCards) {
+    for (const Deck & d : deckOfCards) {
         cout << d.ranks << " of " << d.suits << endl; // had to look up how to print out a vector of structs
     }
 }
 
 void Cards::shuffleDeck() {
     srand(time(0)); // random number generator, if this isn't called, the same results will appear every time
-    
-    random_shuffle(deckOfCards.begin(), deckOfCards.end());
+    random_shuffle(deckOfCards.begin(), deckOfCards.end()); // actually shuffles the deck
     printDeck();
 }
 
