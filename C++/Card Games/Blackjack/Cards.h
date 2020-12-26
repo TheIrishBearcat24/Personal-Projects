@@ -8,8 +8,6 @@
 #include <ctime>
 #include <stdlib.h>
 
-#include "Board.h"
-
 using namespace std;
 
 class Cards {
