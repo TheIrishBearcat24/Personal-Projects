@@ -77,62 +77,62 @@ void Cards::shuffleDeck() {
 
 void Cards::convertVals(string convertedVal) {
     if (convertedVal == two) {
-        convertedValue = stoi(twoVal);
+        convertedValue = 2;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == three) {
-        convertedValue = stoi(threeVal);
+        convertedValue = 3;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == four) {
-        convertedValue = stoi(fourVal);
+        convertedValue = 4;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == five) {
-        convertedValue = stoi(fiveVal);
+        convertedValue = 5;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == six) {
-        convertedValue = stoi(sixVal);
+        convertedValue = 6;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == seven) {
-        convertedValue = stoi(sevenVal);
+        convertedValue = 7;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == eight) {
-        convertedValue = stoi(eightVal);
+        convertedValue = 8;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == nine) {
-        convertedValue = stoi(nineVal);
+        convertedValue = 9;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == ten) {
-        convertedValue = stoi(tenVal);
+        convertedValue = 10;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == jack) {
-        convertedValue = stoi(jackVal);
+        convertedValue = 10;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == queen) {
-        convertedValue = stoi(queenVal);
+        convertedValue = 10;
         cout << "Converted value: " << convertedValue;
     }
 
     else if (convertedVal == king) {
-        convertedValue = stoi(kingVal);
+        convertedValue = 10;
         cout << "Converted value: " << convertedValue;
     }
 }
