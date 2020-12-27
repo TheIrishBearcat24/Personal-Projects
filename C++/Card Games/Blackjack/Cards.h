@@ -8,6 +8,8 @@
 #include <ctime>
 #include <stdlib.h>
 
+// #include "Players.h"
+
 using namespace std;
 
 class Cards {
@@ -36,12 +38,32 @@ class Cards {
             string suits;
         };
 
+        string twoVal = "2";
+        string threeVal = "3";
+        string fourVal = "4";
+        string fiveVal = "5";
+        string sixVal = "6";
+        string sevenVal = "7";
+        string eightVal = "8";
+        string nineVal = "9";
+        string tenVal = "10";
+        string jackVal = "10";
+        string queenVal = "10";
+        string kingVal = "10";
+        string aceVal = "11";
+
+        int convertedValue;
+
         vector<Deck> deckOfCards;
+
+        // Players _players;
 
     public:
         void loadDeck();
         void printDeck();
         void shuffleDeck();
+        void convertVals(string convertedString);
+        void changeAceValue(int logicValue); // logic value 1 is true, logic value 0 is false;
 };
 
 #endif

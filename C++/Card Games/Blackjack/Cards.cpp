@@ -68,14 +68,84 @@ void Cards::printDeck() {
 
 void Cards::shuffleDeck() {
     srand(time(0)); // random number generator, if this isn't called, the same results will appear every time
-    random_shuffle(deckOfCards.begin(), deckOfCards.end()); // actually shuffles the deck
-    printDeck();
+    for (int i = 0; i <= 2; i++) {
+        random_shuffle(deckOfCards.begin(), deckOfCards.end()); // actually shuffles the deck
+        printDeck();
+        cout << endl << endl;
+    }
+}
+
+void Cards::convertVals(string convertedVal) {
+    if (convertedVal == two) {
+        convertedValue = stoi(twoVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == three) {
+        convertedValue = stoi(threeVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == four) {
+        convertedValue = stoi(fourVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == five) {
+        convertedValue = stoi(fiveVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == six) {
+        convertedValue = stoi(sixVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == seven) {
+        convertedValue = stoi(sevenVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == eight) {
+        convertedValue = stoi(eightVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == nine) {
+        convertedValue = stoi(nineVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == ten) {
+        convertedValue = stoi(tenVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == jack) {
+        convertedValue = stoi(jackVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == queen) {
+        convertedValue = stoi(queenVal);
+        cout << "Converted value: " << convertedValue;
+    }
+
+    else if (convertedVal == king) {
+        convertedValue = stoi(kingVal);
+        cout << "Converted value: " << convertedValue;
+    }
 }
 
 int main() {
     Cards _init;
-    _init.loadDeck();
-    _init.shuffleDeck();
+    // _init.loadDeck();
+    // _init.shuffleDeck();
+
+    string convertString;
+    cout << "Enter card rank: ";
+    getline(cin, convertString);
+    _init.convertVals(convertString);
 
     return 0;
 }
