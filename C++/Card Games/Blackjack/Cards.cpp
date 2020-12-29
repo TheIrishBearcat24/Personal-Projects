@@ -1,4 +1,7 @@
 #include "Cards.h"
+// #include "Players.h"
+
+// Players _players;
 
 void Cards::loadDeck() { // creates entire deck of cards
     deckOfCards = {
@@ -134,6 +137,23 @@ void Cards::convertVals(string convertedVal) {
     else if (convertedVal == king) {
         convertedValue = 10;
         cout << "Converted value: " << convertedValue;
+    }
+}
+
+int Cards::getConvertedValue() {
+    return convertedValue;
+}
+
+void Cards::changeAceValue(bool _switch) {
+    
+    if (_switch == true) {
+        handSum += 1;
+        cout << "Hand sum: " << handSum << endl;
+    }
+
+    else {
+        handSum += 11;
+        cout << "Hand sum: " << handSum << endl;
     }
 }
 

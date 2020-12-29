@@ -8,7 +8,7 @@
 #include <ctime>
 #include <stdlib.h>
 
-// #include "Players.h"
+#include "Players.h"
 
 using namespace std;
 
@@ -39,17 +39,19 @@ class Cards {
         };
 
         int convertedValue;
+        int handSum = 0;
 
         vector<Deck> deckOfCards;
-
-        // Players _players;
 
     public:
         void loadDeck();
         void printDeck();
         void shuffleDeck();
+
         void convertVals(string convertedString);
-        void changeAceValue(int logicValue); // logic value 1 is true, logic value 0 is false;
+        int getConvertedValue();
+
+        void changeAceValue(bool _switch);
 };
 
 #endif
