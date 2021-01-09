@@ -157,14 +157,11 @@ int Cards::getHandSum() {
 vector<Cards::Deck> Cards::randRemove() {
     srand(time(0)); // RNG
 
-    //Deck d;
-
-    for (int i = 0; i < 4; i++) {
+    for (int i = 1; i < 4; i++) { // figured out that I have to start the counter at 1, otherwise the number of remaining
+        // cards is 1 off of where it should be
         int removedIndex = rand() % 52; // random number between 0 and 51
-        //shuffleDeck();
-        // stupidly called shuffle deck method and I wondered why the deck was being loaded twice *facepalm*
-        // shuffleDeck calls the printDeck method, which I already have below
         deckOfCards.erase(deckOfCards.begin() + removedIndex); // according to documentation, this auto-shrinks the vector
+        cout << endl; // just here for spacing
         cout << deckOfCards.size() << endl; // this is just here to make sure that the card was successfully removed
         printDeck();
     }
