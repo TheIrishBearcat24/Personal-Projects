@@ -1,7 +1,4 @@
 #include "Cards.h"
-// #include "Players.h"
-
-// Players _players;
 
 void Cards::loadDeck() { // creates entire deck of cards
     deckOfCards = {
@@ -71,11 +68,9 @@ void Cards::printDeck() {
 
 void Cards::shuffleDeck() {
     srand(time(0)); // random number generator, if this isn't called, the same results will appear every time
-    for (int i = 0; i <= 2; i++) {
-        random_shuffle(deckOfCards.begin(), deckOfCards.end()); // actually shuffles the deck
-        printDeck();
-        cout << endl << endl;
-    }
+    random_shuffle(deckOfCards.begin(), deckOfCards.end()); // actually shuffles the deck
+    printDeck();
+    cout << endl << endl;
 }
 
 void Cards::convertVals(string convertedVal) {
@@ -145,27 +140,41 @@ int Cards::getConvertedValue() {
 }
 
 void Cards::changeAceValue(bool _switch) {
-    
     if (_switch == true) {
         handSum += 1;
-        cout << "Hand sum: " << handSum << endl;
     }
 
     else {
         handSum += 11;
-        cout << "Hand sum: " << handSum << endl;
     }
 }
 
+int Cards::getHandSum() {
+    cout << "Hand sum: " << handSum << endl;
+    return handSum;
+}
+
+vector<Cards::Deck> Cards::randRemove() {
+    srand(time(0)); // RNG
+
+    //Deck d;
+
+    for (int i = 0; i < 4; i++) {
+        int removedIndex = rand() % 52; // random number between 0 and 51
+        //shuffleDeck();
+        // stupidly called shuffle deck method and I wondered why the deck was being loaded twice *facepalm*
+        // shuffleDeck calls the printDeck method, which I already have below
+        deckOfCards.erase(deckOfCards.begin() + removedIndex); // according to documentation, this auto-shrinks the vector
+        cout << deckOfCards.size() << endl; // this is just here to make sure that the card was successfully removed
+        printDeck();
+    }
+
+    return deckOfCards;
+}
+
 int main() {
-    Cards _init;
-    // _init.loadDeck();
-    // _init.shuffleDeck();
-
-    string convertString;
-    cout << "Enter card rank: ";
-    getline(cin, convertString);
-    _init.convertVals(convertString);
-
+    Cards _cards;
+    _cards.loadDeck();
+    _cards.randRemove();
     return 0;
 }

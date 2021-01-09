@@ -8,8 +8,6 @@
 #include <ctime>
 #include <stdlib.h>
 
-#include "Players.h"
-
 using namespace std;
 
 class Cards {
@@ -33,17 +31,19 @@ class Cards {
         string spades = "Spades";
         string diamonds = "Diamonds";
 
+        int convertedValue;
+        int handSum = 0;
+
+    public:
         struct Deck {
             string ranks;
             string suits;
         };
 
-        int convertedValue;
-        int handSum = 0;
-
         vector<Deck> deckOfCards;
 
-    public:
+        vector<Deck> randRemove();
+
         void loadDeck();
         void printDeck();
         void shuffleDeck();
@@ -52,6 +52,8 @@ class Cards {
         int getConvertedValue();
 
         void changeAceValue(bool _switch);
+
+        int getHandSum();
 };
 
 #endif
