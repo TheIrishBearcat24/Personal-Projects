@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <sstream> 
+#include <iterator>
 #include <ctime>
 #include <stdlib.h>
 
@@ -48,13 +50,14 @@ class Cards {
         void printDeck();
         void shuffleDeck();
 
-        void convertVals(string convertedString); // changes strings to int values
+        int convertVals(string convertedString); // changes strings to int values
         int getConvertedValue(); // useful for updating current hand sum
-
         void changeAceValue(bool _switch); // sometimes Ace is either 1 or 11, depending on other card values
 
         int getHandSum(); // will be useful for determining when to hit or not when implementing card counting
         int rng(); // had to define a RNG function so that I could access the randIndex value w/o having to run uneeded code
+
+        string toString(vector<Deck> & input);
 };
 
 #endif
