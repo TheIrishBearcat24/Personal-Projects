@@ -67,10 +67,8 @@ void Cards::printDeck() {
 }
 
 void Cards::shuffleDeck() {
-    srand(time(0)); // random number generator, if this isn't called, the same results will appear every time
+    srand(time(0)); // RNG
     random_shuffle(deckOfCards.begin(), deckOfCards.end()); // actually shuffles the deck
-    printDeck();
-    cout << endl << endl;
 }
 
 void Cards::convertVals(string convertedVal) {
@@ -154,17 +152,23 @@ int Cards::getHandSum() {
     return handSum;
 }
 
-vector<Cards::Deck> Cards::randRemove() {
+int Cards::rng() {
     srand(time(0)); // RNG
+    int removedIndex = rand() % 52; // random number between 0 and 51
+    return removedIndex;
+}
 
+vector<Cards::Deck> Cards::randRemove() {
+    
+    printDeck();
     for (int i = 1; i < 4; i++) { // figured out that I have to start the counter at 1, otherwise the number of remaining
         // cards is 1 off of where it should be
-        int removedIndex = rand() % 52; // random number between 0 and 51
-        deckOfCards.erase(deckOfCards.begin() + removedIndex); // according to documentation, this auto-shrinks the vector
+        deckOfCards.erase(deckOfCards.begin() + rng()); // according to documentation, this auto-shrinks the vector
         cout << endl; // just here for spacing
         cout << deckOfCards.size() << endl; // this is just here to make sure that the card was successfully removed
         printDeck();
     }
+    system("pause"); // put this here to keep the window open when running program
 
     return deckOfCards;
 }
@@ -172,6 +176,7 @@ vector<Cards::Deck> Cards::randRemove() {
 int main() {
     Cards _cards;
     _cards.loadDeck();
+    _cards.shuffleDeck();
     _cards.randRemove();
     return 0;
 }

@@ -42,18 +42,19 @@ class Cards {
 
         vector<Deck> deckOfCards;
 
-        vector<Deck> randRemove();
+        vector<Deck> randRemove(); // randomly removes card from deck
 
         void loadDeck();
         void printDeck();
         void shuffleDeck();
 
-        void convertVals(string convertedString);
-        int getConvertedValue();
+        void convertVals(string convertedString); // changes strings to int values
+        int getConvertedValue(); // useful for updating current hand sum
 
-        void changeAceValue(bool _switch);
+        void changeAceValue(bool _switch); // sometimes Ace is either 1 or 11, depending on other card values
 
-        int getHandSum();
+        int getHandSum(); // will be useful for determining when to hit or not when implementing card counting
+        int rng(); // had to define a RNG function so that I could access the randIndex value w/o having to run uneeded code
 };
 
 #endif
